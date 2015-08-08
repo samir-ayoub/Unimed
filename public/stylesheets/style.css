@@ -30,6 +30,11 @@ nav{
 	clear:both;
 }
 
+nav ul{
+	width: 500px;
+	float: left;
+}
+
 nav ul li{
 	font-family: verdana, arial, "open sans";
 	display:inline;
@@ -46,6 +51,10 @@ nav ul li.active{
 	color: #fff;
 }
 
+section p.botao_cadastro{
+	margin-top: 100px;
+}
+
 .login{
 	float: right;
 	font-family: verdana, arial, "open sans";
@@ -58,10 +67,11 @@ nav ul li.active{
 	font-weight: bold;
 	background-color: #CCFF90;
 	color: #009688;
+	margin-top: -7px;
 }
 
 .tabela,.tabela tr,.tabela td{
-	margin-top: 100px;
+	margin-top: 10px;
 	font-family:Verdana, arial, "open sans";
 	width:600px;
 	border:1px solid #000000;
