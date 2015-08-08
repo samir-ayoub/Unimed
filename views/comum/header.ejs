@@ -1,0 +1,26 @@
+<header>
+	<div class="container">
+		<h1 id="titulo">Universidade Corporativa</h1>
+		<div class="logo">
+			<img src="http://www.litoralmania.com.br/wp-content/uploads/2015/01/Logo-Unimed.png">
+		</div>
+		<nav>
+			<ul>
+				<li <% if(tipo=="home"){ %>class="active" <% } %>>
+					<a href="/">Home</a>
+				</li>
+				<li <% if(tipo=="usuario"){ %>class="active" <% } %>>
+					<a href="/usuario">Usuário</a>
+				</li>
+				<li <% if(tipo=="pacientes"){ %>class="active" <% } %>>
+					<a href="/pacientes">Pacientes</a>
+				</li>
+				<li <% if(tipo=="tipos"){ %>class="active" <% } %>>
+					<a href="/tipos">Tipos</a>
+				</li>
+			</ul>
+			<h3 class="login"> Login </h3>
+		</nav>
+	</div>
+</header>
+

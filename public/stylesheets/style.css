@@ -1,0 +1,84 @@
+header{
+	height: 150px;
+	background-image: linear-gradient(to bottom, #ECEFF1, #B0BEC5);
+	 box-shadow: 0px 15px 41px -12px rgba(0,0,0,0.75);
+	width: 100%;
+}
+
+.container{
+	width:700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header .logo img{
+	width:180px;
+	height:80px;
+	float:right;
+	margin-top: 20px;
+}
+
+#titulo {
+	font-family: verdana, arial, "open sans";
+	font-size: 28px;
+	color: #009688;
+	padding: 20px 0 75px 0;
+	float:left;
+}
+
+nav{
+	clear:both;
+}
+
+nav ul li{
+	font-family: verdana, arial, "open sans";
+	display:inline;
+	padding: 10px 30px 10px 30px;
+	border: 1px solid #78909C;
+	margin: 0px;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+nav ul li.active{
+	background-color: #009688;
+	color: #fff;
+}
+
+.login{
+	float: right;
+	font-family: verdana, arial, "open sans";
+	display:inline;
+	padding: 10px 30px 10px 30px;
+	border: 1px solid #78909C;
+	margin: 0px;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	background-color: #CCFF90;
+	color: #009688;
+}
+
+.tabela,.tabela tr,.tabela td{
+	margin-top: 100px;
+	font-family:Verdana, arial, "open sans";
+	width:600px;
+	border:1px solid #000000;
+	vertical-align:middle;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:14px;
+	font-size:18px;
+	font-weight:bold;
+	color:#000000;
+}
+
+.campo{
+	background-color:#009688;
+}
+
+.botao{
+	margin-top: 200px;
+	background-color: #CCFF90;
+}
