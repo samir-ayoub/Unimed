@@ -89,6 +89,14 @@ section p.botao_cadastro{
 }
 
 .botao{
-	margin-top: 200px;
+	margin-top: 180px;
 	background-color: #CCFF90;
+}
+
+.botao_cadastro a{
+	background-color: #CCFF90;
+	font-family: Verdana, arial, "open sans";
+	font-size: 18px;
+	text-decoration: none;
+	padding: 10px;
 }

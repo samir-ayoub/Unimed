@@ -46,5 +46,19 @@ router.get('/criar', function(req,res,next){
 	});
 });
 
+router.get('/excluir', function(req,res,next){
+	Paciente.excluirPorId(parseInt(req.param('id')),function(rows,err){
+				if(err){
+			res.send("erro ao excluir :"+err.message,500);
+		}
+		else{
+			res.redirect("/pacientes");
+		}
+	});
+});
+
+
+
+
 
 module.exports = router;

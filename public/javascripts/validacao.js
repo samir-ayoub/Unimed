@@ -48,6 +48,11 @@ var validarPaciente=function(){
 	}			
 }
 
+var excluirPaciente=function(id){
+	if(confirm("Deseja realmente excluir")){
+		window.location.href='/pacientes/excluir?id='+id;
+	}
+}
 
 var excluirUsuario=function(id){
 	if(confirm("Deseja realmente excluir")){

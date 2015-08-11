@@ -36,6 +36,12 @@ Paciente.criar=function(callback){
 		var query="drop table pacientes; create table pacientes(id int auto_increment primary key, nome varchar(30), sobrenome varchar(50), endereco varchar(200), telefone varchar(12), login varchar(12), senha varchar(12));"
 		db.cnn.exec(query,callback);
 	}
-
 }
+
+Paciente.excluirPorId=function(id,callback)
+	var query="delete from pacientes where id="+id;
+	db.cnn.exec(query,callback);
+}
+
+
 module.exports=Paciente;
