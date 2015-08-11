@@ -38,7 +38,21 @@ router.post('/cadastrar', function(req,res,next){
 router.get('/criar', function(req,res,next){
 	Paciente.criar(function(rows,err){
 		if(err){
-			res.send("erro ao executar :"+err.message,500);
+			Paciente.drop(function(rows,err){
+				if(err){
+					res.send("erro ao executar :"+err.message,500);
+				}
+				else{
+					Paciente.criar(function(rows,err){
+						if(err){
+							res.send("erro ao executar :"+err.message,500);
+						}
+						else{
+							res.redirect("/");
+						}
+					});
+				}
+			});
 		}
 		else{
 			res.redirect("/");

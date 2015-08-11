@@ -28,18 +28,17 @@ Paciente.cadastrar=function(paciente,callback){
 }
 
 Paciente.criar=function(callback){
-	try{
-		var query="create table pacientes(id int auto_increment primary key, nome varchar(30), sobrenome varchar(50), endereco varchar(200), telefone varchar(12), login varchar(12), senha varchar(12));"
-		db.cnn.exec(query,callback);
-	}
-	catch(err){
-		var query="drop table pacientes; create table pacientes(id int auto_increment primary key, nome varchar(30), sobrenome varchar(50), endereco varchar(200), telefone varchar(12), login varchar(12), senha varchar(12));"
-		db.cnn.exec(query,callback);
-	}
+	var query="create table pacientes(id int auto_increment primary key, nome varchar(30), sobrenome varchar(50), endereco varchar(200), telefone varchar(12), login varchar(12), senha varchar(12));"
+	db.cnn.exec(query,callback);
 }
 
 Paciente.excluirPorId=function(id,callback)
 	var query="delete from pacientes where id="+id;
+	db.cnn.exec(Paciente.queryCriar,callback);
+}
+
+Paciente.drop=function(callback){
+	var query="drop table pacientes;"
 	db.cnn.exec(query,callback);
 }
 
