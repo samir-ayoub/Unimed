@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>Cadastro</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<%- include("../comum/header",{tipo:"usuario"}) %>
+		<section class="container">
+			<form action="/pacientes/cadastrar" method="post" onSubmit="return validarPaciente()">
+				<table class="tabela">
+					<tr>
+						<td class="campo">Nome</td>
+	              		<td><input type='text' id="nome" name='nome'/></td>
+
+						<td class="campo">Sobrenome</td>	
+	              		<td><input type='text' id="sobrenome" name='sobrenome'/></td>
+
+						<td class="campo">Endereco</td>	
+	             		 <td><input type='password' id="endereco" name='endereco'/></td>
+
+	             		 <td class="campo">Telefone</td>
+	              		<td><input type='text' id="telefone" name='telefone'/></td>
+
+						<td class="campo">Login</td>	
+	              		<td><input type='text' id="login" name='login'/></td>
+
+						<td class="campo">Senha</td>	
+	             		 <td><input type='password' id="senha" name='senha'/></td>
+					</tr>		
+				</table>
+				<input type='submit' name='OK' value='enviar'/>
+			</form>
+		</section>
+		<%- include("../comum/footer") %>
+		<%- include("../comum/javascripts") %>
+	</body>
+</html>

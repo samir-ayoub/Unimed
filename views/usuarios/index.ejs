@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>Usuários</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<%- include("../comum/header",{tipo:"usuario"}) %>
+
+		<section class="container">
+			<p class="botao_cadastro"><a href="/usuarios/cadastro" class="botao">Cadastrar Usuário</a></p>
+
+			<table class="tabela">
+				<tr>
+					<td class="campo">Nome</td>
+					<td class="campo">Login</td>	
+					<td class="campo">Senha</td>	
+					<td class="campo">Excluir</td>	
+					<td class="campo">Alterar</td>	
+				</tr>
+				<%
+				for(i=0;i<registros.length;i++){
+				%>
+					<tr>
+						<td><%= registros[i].nome %></td>	
+						<td><%= registros[i].login %></td>	
+						<td><%= registros[i].senha %></td>
+						<td><a onclick="excluirUsuario(<%= registros[i].id %>)" href="#">excluir</a></td>
+						<td><a href="/usuarios/alterar?id=<%= registros[i].id %>">Alterar</a></td>
+					</tr>
+				<%	
+				}
+				%>	
+			</table>
+			
+		</section>
+		<%- include("../comum/footer") %>
+		<%- include("../comum/javascripts") %>
+	</body>
+</html>
