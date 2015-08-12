@@ -14,7 +14,7 @@ router.get('/',function(req,res,next){
 });
 
 router.get('/cadastro', function(req, res, next) {
-  res.render('usuarios/cadastro');
+  res.render('usuarios/cadastro',{url:"/usuarios/cadastrar",usuario:new Usuario()});
 });
 
 router.post('/cadastrar', function(req,res,next){
@@ -49,7 +49,8 @@ router.get('/alterar', function(req,res,next){
 			res.send("erro ao buscar Id"+err.message,500);
 		}
 		else{
-			res.render('usuarios/alterar_usuario',{usuario:rows[0]});
+			var usuario=rows[0];
+			res.render('usuarios/cadastro',{url:"/usuarios/update?id="+ usuario.id, usuario:usuario});
 		}
 	});
 });

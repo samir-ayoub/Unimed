@@ -18,6 +18,23 @@ var validarUsuario=function(){
 	}			
 }
 
+var validarTipo=function(){
+	var mensagem="";
+	if($("#tipo").val()==""){
+		mensagem+="Preencha o tipo\n";
+	}
+	if($("#descricao").val()==""){
+		mensagem+="Preencha a descricao\n";
+	}
+	if(mensagem==""){
+		return true;
+	}
+	else{
+		alert(mensagem);
+		return false;
+	}
+}
+
 var validarPaciente=function(){
 	var mensagem="";
 	if($("#nome").val()==""){

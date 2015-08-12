@@ -11,7 +11,7 @@ Usuario=function(nome,login,senha){
 		Usuario.cadastrar(this,callback);
 	}
 	this.alterar=function(callback){
-		Usuario.alterar(this,callback)
+		Usuario.alterar(this,callback);
 	}
 }
 

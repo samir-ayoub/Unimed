@@ -11,7 +11,7 @@ Paciente=function(nome,sobrenome,endereco,telefone,login,senha){
 
 	//metodos publicos//
 	this.cadastrar=function(callback){
-		Usuario.cadastrar(this,callback);
+		Paciente.cadastrar(this,callback);
 	}
 }
 
@@ -32,13 +32,22 @@ Paciente.criar=function(callback){
 	db.cnn.exec(query,callback);
 }
 
-Paciente.excluirPorId=function(id,callback)
+Paciente.excluirPorId=function(id,callback){
 	var query="delete from pacientes where id="+id;
-	db.cnn.exec(Paciente.queryCriar,callback);
+	db.cnn.exec(query,callback);
 }
 
 Paciente.drop=function(callback){
 	var query="drop table pacientes;"
+	db.cnn.exec(query,callback);
+}
+Paciente.buscaPorId=function(id,callback){
+	var query="select * from pacientes where id="+id;
+	db.cnn.exec(query,callback);
+}
+
+Paciente.alterar=function(paciente,callback){
+	var query="update pacientes set nome='"+paciente.nome+"','"+paciente.sobrenome+"','"+paciente.endereco+"','"+paciente.telefone+"','"+paciente.login+"','"+paciente.senha+" where id="+paciente.id;
 	db.cnn.exec(query,callback);
 }
 

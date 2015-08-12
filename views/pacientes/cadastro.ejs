@@ -11,26 +11,31 @@
 	<body>
 		<%- include("../comum/header",{tipo:"usuario"}) %>
 		<section class="container">
-			<form action="/pacientes/cadastrar" method="post" onSubmit="return validarPaciente()">
+			<form action="<%= url %>"  method="post" onSubmit="return validarPaciente()">
 				<table class="tabela">
 					<tr>
 						<td class="campo">Nome</td>
-	              		<td><input type='text' id="nome" name='nome'/></td>
-
+	              		<td><input type='text' id='nome' value='<%= paciente.nome %>' name='nome'/></td>
+	              	</tr>
+	              	<tr>
 						<td class="campo">Sobrenome</td>	
-	              		<td><input type='text' id="sobrenome" name='sobrenome'/></td>
-
+	              		<td><input type='text' id='sobrenome' value='<%= paciente.sobrenome %>' name='sobrenome'/></td>
+	              	</tr>
+	              	<tr>
 						<td class="campo">Endereco</td>	
-	             		 <td><input type='password' id="endereco" name='endereco'/></td>
-
+	             		 <td><input type='text' id='endereco'value='<%= paciente.endereco %>' name='endereco'/></td>
+	             	</tr>
+	             	<tr>
 	             		 <td class="campo">Telefone</td>
-	              		<td><input type='text' id="telefone" name='telefone'/></td>
-
+	              		<td><input type='text'  id='telefone' value='<%= paciente.telefone %>' name='telefone'/></td>
+	              	</tr>
+	              	<tr>
 						<td class="campo">Login</td>	
-	              		<td><input type='text' id="login" name='login'/></td>
-
+	              		<td><input type='text' id='login' value='<%= paciente.login %>' name='login'/></td>
+	              	</tr>
+	              	<tr>
 						<td class="campo">Senha</td>	
-	             		 <td><input type='password' id="senha" name='senha'/></td>
+	             		<td><input type='text' id='senha' value='<%= paciente.senha %>' name='senha'/></td>
 					</tr>		
 				</table>
 				<input type='submit' name='OK' value='enviar'/>

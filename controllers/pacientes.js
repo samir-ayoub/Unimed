@@ -13,8 +13,8 @@ router.get('/',function(req,res,next){
 	});
 });
 
-router.get('/cadastro', function(req, res, next) {
-  res.render('pacientes/cadastro');
+router.get('/cadastro', function(req, res, next){
+  res.render('pacientes/cadastro',{url:"/pacientes/cadastrar",paciente:new Paciente()});
 });
 
 router.post('/cadastrar', function(req,res,next){
@@ -48,21 +48,53 @@ router.get('/criar', function(req,res,next){
 							res.send("erro ao executar :"+err.message,500);
 						}
 						else{
-							res.redirect("/");
+							res.redirect("/pacientes");
 						}
 					});
 				}
 			});
 		}
 		else{
-			res.redirect("/");
+			res.redirect("/pacientes");
+		}
+	});
+});
+
+router.get('/alterar', function(req,res,next){
+	Paciente.buscaPorId(req.param("id"),function(rows,err){
+		if(err){
+			res.send("erro ao buscar Id"+err.message,500);
+		}
+		else{
+			var paciente=rows[0];
+			res.render('pacientes/cadastro',{url:"/pacientes/update?id="+ paciente.id, paciente:paciente});
+		}
+	});
+});
+
+router.post('/update', function(req,res,next){
+	paciente={
+		id:req.param("id"),
+		nome:req.param("nome"),
+		sobrenome:req.param("sobrenome"),
+		endereco:req.param("endereco"),
+		telefone:req.param("telefone"),
+		login:req.param("login"),
+		senha:req.param("senha")
+	}
+	Paciente.alterar(paciente,function(rows,err){
+				if(err){
+			res.send("erro ao atualizar"+err.message,500);
+		}
+		else{
+			res.redirect("/pacientes");
 		}
 	});
 });
 
 router.get('/excluir', function(req,res,next){
 	Paciente.excluirPorId(parseInt(req.param('id')),function(rows,err){
-				if(err){
+		if(err){
 			res.send("erro ao excluir :"+err.message,500);
 		}
 		else{

@@ -11,18 +11,20 @@
 	<body>
 		<%- include("../comum/header",{tipo:"usuario"}) %>
 		<section class="container">
-			<form action="/usuarios/cadastrar" method="post" onSubmit="return validarUsuario()">
+			<form action="<%= url %>" method="post" onSubmit="return validarUsuario()">
 				<table class="tabela">
 					<tr>
 						<td class="campo">Nome</td>
-	              		<td><input type='text' id="nome" name='nome'/></td>
+             			<td><input type='text' id="nome" value='<%= usuario.nome %>'name='nome'/></td>
+
 
 						<td class="campo">Login</td>	
-	              		<td><input type='text' id="login" name='login'/></td>
+             			<td><input type='text'  id="login"  value='<%= usuario.login %>' name='login'/></td>
+
 
 						<td class="campo">Senha</td>	
-	             		 <td><input type='password' id="senha" name='senha'/></td>
-					</tr>		
+              			<td><input type='password' id="senha"  value='<%= usuario.senha %>'name='senha'/></td>
+					</tr>			
 				</table>
 				<input type='submit' name='OK' value='enviar'/>
 			</form>
