@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>Cadastro</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<%- include("../comum/header",{tipo:"tipos"}) %>
+		<section class="container">
+			<form action="<%= url %>" method="post" onSubmit="return validarTipo()">
+				<table class="tabela">
+					<tr>
+						<td class="campo">Tipo</td>
+             			<td><input type='text' id="tipo" value='<%= tipo.tipo %>'name='tipo'/></td>
+
+
+						<td class="campo">Descrição</td>	
+             			<td><textarea rows="10" cals="50" id="descricao"  value='<%= tipo.descricao %>' name='descricao'/></td>
+					</tr>			
+				</table>
+
+				<input type='submit' name='OK' value='enviar'/>
+			</form>
+		</section>
+		<%- include("../comum/footer") %>
+		<%- include("../comum/javascripts") %>
+	</body>
+</html>

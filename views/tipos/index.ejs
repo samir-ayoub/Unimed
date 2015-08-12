@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>Tipos</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+	</head>
+	<body>
+		<%- include("../comum/header",{tipo:"tipos"}) %>
+
+		<section class="container">
+			<p class="botao_cadastro"><a href="/tipos/cadastro" class="botao">Cadastrar Tipo</a></p>
+
+			<table class="tabela">
+				<tr>
+					<td class="campo">Tipo</td>
+					<td class="campo">Descrição Tipo</td>	
+				</tr>
+				<%
+				for(i=0;i<registros.length;i++){
+				%>
+					<tr>
+						<td><%= registros[i].tipo %></td>	
+						<td><%= registros[i].descricao %></td>	
+						<td><a onclick="excluirTipo(<%= registros[i].id %>)" href="#">excluir</a></td>
+						<td><a href="/tipos/alterar?id=<%= registros[i].id %>">Alterar</a></td>
+					</tr>
+				<%	
+				}
+				%>	
+			</table>
+			
+		</section>
+		<%- include("../comum/footer") %>
+		<%- include("../comum/javascripts") %>
+	</body>
+</html>
