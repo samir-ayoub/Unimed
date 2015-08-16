@@ -65,6 +65,32 @@ var validarPaciente=function(){
 	}			
 }
 
+var validarVisita=function(){
+	var mensagem="";
+	if($("#nome").val()==""){
+		mensagem+="Preencha o nome\n";
+	}
+	if($("#endereco").val()==""){
+		mensagem+="Preencha o endereço\n";
+	}
+	if($("#dia").val()==""){
+		mensagem+="Preencha o dia\n";
+	}
+	if($("#horas").val()==""){
+	mensagem+="Preencha as horas\n";
+	}
+	if($("#descricao").val()==""){
+		mensagem+="Preencha a descrição\n";
+	}
+	if(mensagem==""){
+		return true;
+	}
+	else{
+		alert(mensagem);
+		return false;
+	}			
+}
+
 var excluirPaciente=function(id){
 	if(confirm("Deseja realmente excluir")){
 		window.location.href='/pacientes/excluir?id='+id;
@@ -76,3 +102,35 @@ var excluirUsuario=function(id){
 		window.location.href='/usuarios/excluir?id='+id;
 	}
 }
+
+var excluirTipo=function(id){
+		if(confirm("Deseja realmente excluir")){
+		window.location.href='/tipos/excluir?id='+id;
+	}
+}
+
+var excluirVisita=function(id){
+	if(confirm("Deseja realmente excluir?")){
+		window.location.href='/visitas/excluir?id='+id;
+	}
+}
+
+if($("#paciente").size()>0){
+	$.ajax({
+ 		url: "/pacientes/listar"
+	}).done(function(data) {
+		var options=""
+		for(i=0;i<data.length;i++){
+			options+="<option value='"+data[i].nome+"'>"+data[i].nome+"</option>"
+		}
+		$("#paciente").html(options)
+	});
+}
+
+
+
+
+
+
+
+

@@ -1,10 +1,11 @@
 require("../db/connection")
 
 
-Tipo=function(tipo,descricao){
+Tipo=function(id,tipo,descricao){
 	//atributos publicos//
 	this.tipo=tipo;
 	this.descricao=descricao;
+	this.id=id;
 
 	//metodos publicos//
 	this.cadastrar=function(callback){
@@ -16,7 +17,8 @@ Tipo=function(tipo,descricao){
 
 //metodos estaticos//
 Tipo.cadastrar=function(tipo,callback){
-	var query="insert into tipos(tipo,descricao)values('"+tipo+"','"+descricao+"')"
+	var query="insert into tipos(tipo,descricao)values('"+tipo.tipo+"','"+tipo.descricao+"')"
+	db.cnn.exec(query,callback);
 }
 
 Tipo.criar=function(callback){
@@ -34,5 +36,19 @@ Tipo.listar=function(callback){
 	db.cnn.exec(query,callback);
 }
 
+Tipo.excluir=function(id,callback){
+	var query="delete from tipos where id="+id;
+	db.cnn.exec(query,callback);
+}
+
+Tipo.buscaPorId=function(id,callback){
+	var query="select * from tipos where id="+id;
+	db.cnn.exec(query,callback);
+}
+
+Tipo.alterar=function(tipo,callback){
+	var query="update tipos set tipo='"+tipo.tipo+"',descricao='"+tipo.descricao+"' where id="+tipo.id;
+	db.cnn.exec(query,callback);
+}
 
 module.exports=Paciente;

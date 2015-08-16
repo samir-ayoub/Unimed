@@ -6,7 +6,7 @@ header{
 }
 
 .container{
-	width:700px;
+	width:800px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -31,7 +31,7 @@ nav{
 }
 
 nav ul{
-	width: 500px;
+	width: 600px;
 	float: left;
 }
 

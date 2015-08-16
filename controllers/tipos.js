@@ -42,10 +42,6 @@ router.get('/cadastro', function(req,res,next){
 	res.render('tipos/cadastro',{url:"/tipos/cadastrar",tipo:new Tipo()});
 });
 
-router.get('/cadastro', function(req, res, next) {
-  res.render('usuarios/cadastro',{url:"/usuarios/cadastrar",usuario:new Usuario()});
-});
-
 router.post('/cadastrar',function(req,res,next){
 	var tipo=new Tipo();
 	tipo.tipo=req.param("tipo");
@@ -60,6 +56,42 @@ router.post('/cadastrar',function(req,res,next){
 	});
 });
 
+router.get('/excluir', function(req,res,next){
+	Tipo.excluir(req.param("id"),function(rows,err){
+		if(err){
+			res.send("erro ao cadastrar:"+err.message,500);
+		}
+		else{
+			res.redirect("/tipos");
+		}
+	});
+});
 
+router.get('/alterar', function(req,res,next){
+	Tipo.buscaPorId(req.param("id"),function(rows,err){
+		if(err){
+			res.send("erro ao buscar Id"+err.message,500);
+		}
+		else{
+			var tipo=rows[0];
+			res.render('tipos/cadastro',{url:"/tipos/update?id="+ tipo.id, tipo:tipo});
+		}
+	});
+});
+
+router.post('/update', function(req,res,next){
+	tipo=new Tipo();
+	tipo.id=req.param("id");
+	tipo.tipo=req.param("tipo");
+	tipo.descricao=req.param("descricao");
+	Tipo.alterar(tipo,function(rows,err){
+		if(err){
+			res.send("erro ao atualizar"+err.message,500);
+		}
+		else{
+			res.redirect("/tipos");
+		}
+	});
+});
 
 module.exports = router;

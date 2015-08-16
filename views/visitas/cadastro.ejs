@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>Descricao de visitas</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<%- include("../comum/header",{tipo:"visitas"}) %>
+		<section class="container">
+			<form action="<%= url %>" method="post" onSubmit="return validarVisita()">
+				<table class="tabela">
+					<tr>
+						<td class="campo">Paciente</td>
+             			<td>
+             				<!--<input type='text' id="nome" value='<%= visita.nome %>'name='nome'/> -->
+             				<select id="paciente" nome="nome">
+							  <option value="">Selecione</option>
+							</select>
+
+             			</td>
+					</tr>
+					<tr>
+						<td class="campo">Endereço</td>	
+             			<td><input type='text'  id="endereco"  value='<%= visita.endereco %>' name='endereco'/></td>
+             		</tr>
+					<tr>
+						<td class="campo">Dia</td>	
+              			<td><input type='text' id="dia"  value='<%= visita.dia %>'name='dia'/></td>
+             		</tr>
+					<tr>
+              			<td class="campo">Horas</td>	
+              			<td><input type='text' id="horas"  value='<%= visita.horas %>'name='horas'/></td>
+             		</tr>
+					<tr>
+              			<td class="campo">Descricao</td>	
+             			<td><textarea rows="10" cals="50" id="descricao" name='descricao'> <%= visita.descricao %> </textarea></td>
+
+
+					</tr>			
+				</table>
+				<input type='submit' name='OK' value='enviar'/>
+			</form>
+			<div id="teste">
+			</div>
+		</section>
+		<%- include("../comum/footer") %>
+		<%- include("../comum/javascripts") %>
+		<script>
+		$.ajax({
+	 		url: "/pacientes"
+		}).done(function(data) {
+			$("#teste").html(data)
+		});
+		</script>
+	</body>
+</html>

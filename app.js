@@ -10,6 +10,7 @@ var users = require('./controllers/users');
 var cadastro = require('./controllers/usuario');
 var pacientes = require('./controllers/pacientes');
 var tipos = require('./controllers/tipos');
+var visitas = require('./controllers/visitas');
 var app = express();
 
 // view engine setup
@@ -29,6 +30,7 @@ app.use('/users', users);
 app.use('/usuarios', cadastro);
 app.use('/pacientes', pacientes);
 app.use('/tipos', tipos);
+app.use('/visitas', visitas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

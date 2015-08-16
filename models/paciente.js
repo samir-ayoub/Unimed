@@ -46,8 +46,16 @@ Paciente.buscaPorId=function(id,callback){
 	db.cnn.exec(query,callback);
 }
 
+Paciente.salvar=function(paciente,callback){
+	var query="insert into pacientes(nome,sobrenome,endereco,telefone,login,senha)values('"+paciente.nome+"','"+paciente.sobrenome+"','"+paciente.endereco+"','"+paciente.telefone+"','"+paciente.login+"','"+paciente.senha+"')";
+	if(paciente.id){
+		query="update pacientes set nome='"+paciente.nome+"', sobrenome='"+paciente.sobrenome+"', endereco='"+paciente.endereco+"', telefone='"+paciente.telefone+"', login='"+paciente.login+"', senha='"+paciente.senha+" where id="+paciente.id;
+	}
+	db.cnn.exec(query,callback);
+}
+
 Paciente.alterar=function(paciente,callback){
-	var query="update pacientes set nome='"+paciente.nome+"','"+paciente.sobrenome+"','"+paciente.endereco+"','"+paciente.telefone+"','"+paciente.login+"','"+paciente.senha+" where id="+paciente.id;
+	var query="update pacientes set nome='"+paciente.nome+"', sobrenome='"+paciente.sobrenome+"', endereco='"+paciente.endereco+"', telefone='"+paciente.telefone+"', login='"+paciente.login+"', senha='"+paciente.senha+"' where id="+paciente.id;
 	db.cnn.exec(query,callback);
 }
 

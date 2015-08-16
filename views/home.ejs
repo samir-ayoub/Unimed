@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+	<head>
+		<meta charset="uft-8">
+		<title>Unimed</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<%- include("comum/header",{tipo:"home"}) %>
+
+		<section class="container">
+			
+		</section>
+		<%- include("comum/footer") %>
+		<%- include("comum/javascripts") %>
+	</body>
 </html>
