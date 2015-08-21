@@ -1,0 +1,23 @@
+
+<table class="tabela" id="tabela_medicos">
+	<tr>
+		<td class="campo">Nome</td>
+		<td class="campo">Número CRM</td>
+		<td class="campo">Telefone</td>
+		<td class="campo"> Excluir</td>
+		<td class="campo"> Alterar</td>	
+	</tr>
+	<%
+	for(i=0;i<registros.length;i++){
+	%>
+		<tr>
+			<td><%= registros[i].nome %></td>	
+			<td><%= registros[i].crm %></td>	
+			<td><%= registros[i].telefone %></td>	
+			<td><a id="excluir" onclick="excluirMedico(<%= registros[i].id %>)" href="#">excluir</a></td>
+			<td><a id="alterar" onclick="alterarMedico(<%= registros[i].id %>)" href="#">Alterar</a></td>
+		</tr>
+	<%	
+	}
+	%>	
+</table>

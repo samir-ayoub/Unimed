@@ -115,17 +115,125 @@ var excluirVisita=function(id){
 	}
 }
 
-if($("#paciente").size()>0){
-	$.ajax({
- 		url: "/pacientes/listar"
-	}).done(function(data) {
-		var options=""
-		for(i=0;i<data.length;i++){
-			options+="<option value='"+data[i].nome+"'>"+data[i].nome+"</option>"
+$(document).ready(function(){
+	if($("#paciente").size()>0){
+		$.ajax({
+	 		url: "/pacientes/listar"
+		}).done(function(data) {
+			var options=""
+			for(i=0;i<data.length;i++){
+				options+="<option value='"+data[i].nome+"'>"+data[i].nome+"</option>"
+			}
+			$("#paciente").html(options)
+		});
+	}
+
+	var tabela=function(){
+		var html= "<table>";
+		html+="<tr><td>Nome</td><td><input type='text' name='nome' id='nome'></td></tr>";
+		html+="<tr><td>Status</td><td><input type='text' name='status' id='status'></td></tr>";
+		html+="<tr><td collspan='2'><input type='button' value='ok' id='ok'></td></tr>";
+		html+="<tr><td collspan='2'><input type='hidden' name='id' id='id'></td></tr>";
+		html+="</table>";
+		$("#cadastro").html(html);
+	}
+	var valida=function(){
+		if($("#nome").val()==""){
+			alert("preencha o nome");
+			return false;
 		}
-		$("#paciente").html(options)
-	});
-}
+		if($("#status").val()==""){
+			alert("preencha o status");
+			return false;
+		}		
+		return true
+	}
+
+	$("#cadastrar_aparelho").click(function(){
+		tabela();
+		$("#ok").click(function(){
+			if(!valida()) return
+
+			$.ajax({
+				method: "POST",
+		 		url: "/aparelhos/cadastro",
+		 		data: {
+		 			nome: $("#nome").val(),
+		 			status: $("#status").val()
+		 		}
+			}).done(function(data){
+				$("#cadastro").html("");
+				carregarTabela();
+			}).fail(function( jqXHR, textStatus ) {
+  				alert( "Request failed: " + textStatus );
+			});
+		})
+	})
+
+	var carregarTabela =function(){
+		$.ajax({
+	 		url: "/aparelhos/tabela"
+		}).done(function(data) {
+
+			$("#registros").html(data)
+			acoesTabela();
+		});
+	}
+
+	var acoesTabela=function(){
+		$("#tabela_aparelhos #excluir").click(function(){
+			if(confirm("deseja realmente apagar?")){
+				var id=$(this).data("id")
+				$.ajax({
+			 		url: "/aparelhos/excluir?id="+id
+				}).done(function(data) {
+					carregarTabela();
+				}).fail(function( jqXHR, textStatus ) {
+	  				alert( "Request failed: " + textStatus );
+				});
+			}
+			
+		})
+
+		$("#tabela_aparelhos #alterar").click(function(){
+			var id=$(this).data("id")
+			$.ajax({
+		 		url: "/aparelhos/buscar?id="+id
+			}).done(function(data) {
+				tabela()
+				var aparelho=data[0];
+				$("#nome").val(aparelho.nome)
+				$("#status").val(aparelho.status)
+				$("#id").val(aparelho.id)
+
+				$("#ok").click(function(){
+					if(!valida()) return
+					$.ajax({
+						method: "POST",
+				 		url: "/aparelhos/alterar",
+				 		data: {
+				 			nome: $("#nome").val(),
+				 			id: $("#id").val(),
+				 			status: $("#status").val()
+				 		}
+					}).done(function(data){
+						$("#cadastro").html("");
+						carregarTabela();
+					}).fail(function( jqXHR, textStatus ) {
+		  				alert( "Request failed: " + textStatus );
+					});
+				})
+			}).fail(function( jqXHR, textStatus ) {
+  				alert( "Request failed: " + textStatus );
+			});
+			
+		})
+	}
+	acoesTabela();
+
+})
+
+
 
 
 

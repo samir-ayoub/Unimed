@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>Medicos</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+		<link href="/stylesheets/reset.css" rel="stylesheet">
+	</head>
+	<body>
+		<%- include("../comum/header",{tipo:"medicos"}) %>
+
+		<section class="container">
+			<p class="botao_cadastro"><a href="#" id="cadastrar_medico" class="botao">Cadastrar Medico</a></p>
+
+			<div id="cadastro">
+			</div>
+			<div id="registros">
+				<%- include("tabela",{registros:registros}) %>
+			</div>
+
+			
+		</section>
+		<%- include("../comum/footer") %>
+		<%- include("../comum/javascripts") %>
+	</body>
+</html>

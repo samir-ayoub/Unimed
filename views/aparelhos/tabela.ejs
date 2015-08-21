@@ -1,0 +1,21 @@
+
+<table class="tabela" id="tabela_aparelhos">
+	<tr>
+		<td class="campo">Nome</td>
+		<td class="campo">Status</td>
+		<td class="campo"> Excluir</td>
+		<td class="campo"> Alterar</td>	
+	</tr>
+	<%
+	for(i=0;i<registros.length;i++){
+	%>
+		<tr>
+			<td><%= registros[i].nome %></td>	
+			<td><%= registros[i].status %></td>	
+			<td><a id="excluir" data-id="<%= registros[i].id %>" href="#">excluir</a></td>
+			<td><a id="alterar" data-id="<%= registros[i].id %>" href="#">Alterar</a></td>
+		</tr>
+	<%	
+	}
+	%>	
+</table>
