@@ -1,0 +1,25 @@
+
+<table class="tabela" id="tabela_laudos">
+	<tr>
+		<td class="campo">Nome</td>
+		<td class="campo">Resumo</td>
+		<td class="campo">Receita</td>
+		<td class="campo">Medico</td>
+		<td class="campo"> Excluir</td>
+		<td class="campo"> Alterar</td>	
+	</tr>
+	<%
+	for(i=0;i<registros.length;i++){
+	%>
+		<tr>
+			<td><%= registros[i].nome %></td>	
+			<td><%= registros[i].resumo %></td>	
+			<td><%= registros[i].receita %></td>	
+			<td><%= registros[i].medico  %></td>	
+			<td><a id="excluir" onclick="excluirLaudo(<%= registros[i].id %>)" href="#">excluir</a></td>
+			<td><a id="alterar" onclick="alterarLaudo(<%= registros[i].id %>)" href="#">Alterar</a></td>
+		</tr>
+	<%	
+	}
+	%>	
+</table>

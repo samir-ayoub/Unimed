@@ -13,6 +13,7 @@ var tipos = require('./controllers/tipos');
 var visitas = require('./controllers/visitas');
 var aparelhos = require('./controllers/aparelhos');
 var medicos = require('./controllers/medicos');
+var laudos = require('./controllers/laudos');
 var app = express();
 
 // view engine setup
@@ -35,6 +36,7 @@ app.use('/tipos', tipos);
 app.use('/visitas', visitas);
 app.use('/aparelhos', aparelhos);
 app.use('/medicos', medicos);
+app.use('/laudos', laudos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

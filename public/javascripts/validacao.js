@@ -137,6 +137,7 @@ $(document).ready(function(){
 		html+="</table>";
 		$("#cadastro").html(html);
 	}
+	
 	var valida=function(){
 		if($("#nome").val()==""){
 			alert("preencha o nome");
